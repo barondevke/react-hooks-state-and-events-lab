@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 
 function Item({ name, category }) {
+  const [virtualCart, setVirtualCart] = useState(false)
+  let listClass = virtualCart ? 'in-cart' : ''
   return (
-    <li className="">
+    <li className={listClass}>
       <span>{name}</span>
       <span className="category">{category}</span>
-      <button className="add">Add to Cart</button>
+      <button type="button" onClick={() => setVirtualCart(!virtualCart)} className="add">{virtualCart ? 'Remove From Cart' : 'Add to Cart'}</button>
     </li>
   );
 }
